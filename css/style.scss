@@ -1,0 +1,1009 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -os-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+  /*
+    perspective: 400px;
+*/
+}
+body {
+  /* font-family: 'open sans, tahoma';*/
+  font-family: "Oxygen", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  overflow: hidden;
+}
+
+body button {
+  outline: none !important;
+  text-transform: capitalize !important;
+}
+
+/*start fram work to this site*/
+
+/*start site elements color*/
+$main-color: #10bc97;
+$second-color: #b71540;
+$p-color: #ddd;
+$h-color: #fff;
+$main-font: 16px;
+/*end site elements color*/
+
+%main-div {
+  position: relative;
+  margin-top: 0;
+  margin-left: 0;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+%over {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(1, 1, 1, 0.6) !important;
+}
+%button {
+  margin: 20px auto;
+  border: 1px solid $h-color;
+  width: 120px;
+  padding: 8px;
+  background-color: transparent;
+  color: $h-color;
+  outline: none;
+  cursor: pointer;
+
+  %h-style {
+    text-transform: uppercase;
+    padding-bottom: 20px !important;
+  }
+  %h-before {
+    content: "";
+    position: absolute;
+    height: 54px;
+    border: 3px solid #08d9d6;
+    left: 0px;
+    top: 6px;
+  }
+  &:hover {
+    background-color: $second-color;
+    border-color: $second-color;
+  }
+}
+
+@mixin transition($t) {
+  -webkit-transition: all $t ease-in-out;
+  -moz-transition: all $t ease-in-out;
+  -ms-transition: all $t ease-in-out;
+  -o-transition: all $t ease-in-out;
+  transition: all $t ease-in-out;
+}
+
+@mixin border-R($b) {
+  -webkit-border-radius: $b;
+  -moz-border-radius: $b;
+  -ms-border-radius: $b;
+  -o-border-radius: $b;
+  border-radius: $b;
+}
+
+/*end fram work to this site*/
+/*this style for ffbar*/
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: $second-color;
+  border: none;
+  background-color: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: $main-color;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: $second-color;
+  @include transition(1s);
+}
+
+/*this clas will be added to navbar after scrolling  to top */
+
+.active-li {
+  color: $p-color !important;
+}
+
+/*adding style to navbar after scroll*/
+.scroll {
+  /*   border-bottom: 1px solid $p-color;
+*/
+  box-shadow: 0 0 25px -10px #000;
+  -webkit-box-shadow: 0 0 25px -10px #000;
+  -moz-box-shadow: 0 0 25px -10px #000;
+  background-color: $main-color;
+
+  /*start navbar style*/
+}
+nav {
+  position: fixed !important;
+  top: 0 !important;
+  width: 100%;
+  z-index: 9999;
+  text-transform: capitalize;
+  @include transition(0.5s);
+  overflow: hidden;
+
+  a {
+    color: $h-color;
+  }
+  ul {
+    direction: ltr !important;
+    width: 100%;
+    float: right !important;
+    /*start media for min screen size 991px */
+    @media (min-width: 991px) {
+      margin-left: 35% !important;
+      justify-content: space-around;
+    }
+    /*end media for min screen size 991px */
+
+    li {
+      float: right;
+      @media (max-width: 991px) {
+        margin-top: 10px;
+      }
+
+      a {
+        font-size: $main-font + 3px;
+        color: $h-color;
+      }
+    }
+  }
+}
+.navbar .content-icon {
+  height: 40px;
+  @include transition(0.7s);
+  @media (min-width: 992px) {
+    border: none;
+  }
+  img {
+    border: none;
+    width: 70px;
+    height: 42px;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}
+.navbar .nav-item .nav-link {
+  display: inline-block;
+  color: $h-color;
+  border-bottom: 2px solid transparent;
+  @include transition(0.3s);
+  &:active,
+  &:focus {
+    color: $second-color !important;
+    border-bottom: 2px solid $second-color;
+  }
+  @media (max-width: 991px) {
+    &:active,
+    &:focus {
+      border-bottom: none !important;
+    }
+  }
+}
+.navbar .nav-item .nav-link:hover {
+  color: #555;
+
+  @media (max-width: 991px) {
+    border-color: transparent;
+
+    /* background-color: $second-color;*/
+    outline: none;
+  }
+}
+
+.navbar button {
+  cursor: pointer;
+}
+.navbar-toggler.navbar-toggler-right {
+  background-color: $h-color;
+}
+/*end navbar style*/
+
+/*start header slement style*/
+header {
+  @extend %main-div;
+  min-height: 500px;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 78%, 0% 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 78%, 0% 100%);
+  background-color: $main-color;
+  overflow: visible;
+  @media (max-width: 575px) {
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 88%, 0% 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 88%, 0% 100%);
+  }
+  .container {
+    .row {
+      .col-sm-12 {
+        h2 {
+          padding-top: 160px;
+          text-transform: capitalize;
+          font-size: $main-font + 15px;
+          letter-spacing: 1px;
+          font-weight: bold;
+          margin: 10px auto;
+          text-align: left;
+          color: $h-color;
+          &:after {
+            position: absolute;
+            content: "";
+            margin-top: 37px;
+            margin-left: -240px;
+            width: 22px;
+            border: 2px solid $h-color;
+            @include border-R(2px);
+          }
+          span.head {
+            color: $second-color;
+          }
+        }
+        span {
+          text-transform: capitalize;
+          color: $h-color;
+        }
+        button {
+          display: block;
+          @extend %button;
+          position: relative;
+          margin-left: 0 !important;
+          border: 1px solid $second-color !important;
+          /*@include border-R(15px);*/
+          background-color: $main-color;
+          border: none;
+          height: 35px;
+          @include transition(0.4s);
+          &:after {
+            position: absolute;
+            content: "";
+            right: -1px;
+            top: -4px;
+            border: 1px solid $second-color;
+            width: 0;
+            @include border-R(2px);
+            @include transition(0.4s);
+          }
+          &:before {
+            position: absolute;
+            content: "";
+            margin-top: 27px;
+            left: -1px;
+            border: 1px solid $second-color;
+            width: 0;
+            @include transition(0.4s);
+          }
+
+          &:hover {
+            background-color: $second-color;
+            &:after,
+            &:before {
+              width: 120px;
+            }
+            a {
+              color: $h-color;
+            }
+          }
+          a {
+            text-decoration: none;
+            color: $second-color;
+            text-transform: capitalize;
+            @include transition(0.3s);
+          }
+        }
+      }
+      /*col-sm-12*/
+      .second {
+        min-height: 600px !important;
+        .img {
+          background-image: url(../img/1.png);
+          background-size: cover;
+          height: 370px;
+          width: 133px;
+          margin: 0 auto;
+          margin-top: 100px;
+          margin-bottom: 50px;
+          @media (max-width: 575px) {
+          }
+          @media (min-width: 768px) and (max-width: 992px) {
+          }
+        }
+      }
+    }
+  }
+}
+/*start about div elements style*/
+.about {
+  @extend %main-div;
+  padding-top: 50px;
+  .container {
+    .row {
+      .col-sm-12 {
+        h3 {
+          span {
+            color: $second-color;
+          }
+        }
+        .content {
+          padding-top: 50px;
+
+          .second-con {
+            display: inline-block;
+            width: calc(90% - 70px);
+            margin-left: 5%;
+            text-align: left;
+            button {
+              width: 50px;
+              height: 50px;
+              float: left;
+              margin-top: 15px;
+              margin-right: 10px;
+              background-color: $main-color;
+              border: 1px solid $main-color;
+
+              i {
+                line-height: 25px;
+                font-size: $main-font + 3px;
+                color: $second-color;
+              }
+            }
+            h4 {
+              color: $main-color;
+              text-transform: capitalize;
+            }
+            span {
+              display: block;
+              color: #666;
+              margin-left: 60px;
+              text-transform: capitalize;
+            }
+          }
+        }
+      }
+      .col-sm-12.seconde {
+        .img {
+          background-image: url(../img/about.png);
+          background-size: cover;
+          height: 360px;
+          margin: 50px auto;
+          @media (min-width: 768px) and (max-width: 992px) {
+            height: 260px;
+          }
+          @media (max-width: 500px) {
+            height: 270px;
+          }
+        }
+      }
+    }
+  }
+}
+/*start features div elements */
+.features {
+  min-height: 800px;
+  -webkit-clip-path: polygon(0 22%, 100% 0, 100% 80%, 0% 100%);
+  clip-path: polygon(0 22%, 100% 0, 100% 80%, 0% 100%);
+  background-color: $main-color;
+  overflow: visible;
+  @media (min-width: 768px) and (max-width: 991px) {
+    -webkit-clip-path: polygon(0 22%, 100% 0, 100% 88%, 0% 100%);
+    clip-path: polygon(0 22%, 100% 0, 100% 88%, 0% 100%);
+  }
+  @media (max-width: 767px) {
+    -webkit-clip-path: none;
+    clip-path: none;
+    min-height: 650px;
+  }
+  .container {
+    text-align: center;
+    h3 {
+      padding-top: 120px;
+      padding-bottom: 30px;
+      color: $h-color;
+      text-transform: capitalize;
+      text-align: center;
+      @media (max-width: 767px) {
+        padding-top: 50px;
+      }
+    }
+    .row {
+      .col-sm-6 {
+        margin-bottom: 50px;
+        &:hover {
+          .main-content {
+            box-shadow: 0 0 15px -10px $main-color;
+            -webkit-box-shadow: 0 0 15px -10px $second-color;
+          }
+        }
+        .main-content {
+          background-color: transparent;
+          @include transition(0.3s);
+
+          i {
+            padding: 20px 0 10px 0;
+            font-size: 20px;
+            font-size: $main-font + 10px;
+            color: $second-color;
+          }
+          h4 {
+            text-transform: capitalize;
+            color: $h-color;
+          }
+          span {
+            width: 200px;
+            margin: 0 auto;
+            color: $p-color;
+            display: block;
+            padding-bottom: 20px;
+          }
+        }
+      }
+    }
+  }
+}
+/*start service div elements style*/
+
+.service {
+  padding-top: 100px;
+  .container {
+    .row {
+      .col-sm-6 {
+        overflow: hidden;
+        .main-con {
+          margin-top: 50px;
+          margin-bottom: 50px;
+          width: calc(100% - 30px);
+          display: inline-block;
+          border: 1px solid transparent;
+          @include transition(0.2s);
+          &:hover {
+            box-shadow: 0 0 15px -8px $main-color;
+            -webkit-box-shadow: 0 0 15px -8px $second-color;
+            -webkit-transform: scale(1.01);
+            transform: scale(1.01);
+          }
+          .img {
+            background-image: url(../img/service-1.png);
+            background-size: cover;
+            margin: 0 auto;
+            padding: 20px 0 20px 0;
+            width: 100px;
+            height: 100px;
+            @enclude border-R(50%);
+          }
+          h4 {
+            margin: 10px 0 10px 0;
+            text-transform: capitalize;
+          }
+          span {
+            display: block;
+            text-transform: capitalize;
+            color: #666;
+            width: 90%;
+            margin-left: 5%;
+          }
+          button {
+            @extend %button;
+            position: relative;
+            margin-left: 0 !important;
+            border: 1px solid $second-color !important;
+            /*@include border-R(15px);*/
+            background-color: transparent;
+            border: none;
+            height: 35px;
+            @include transition(0.4s);
+            &:after {
+              position: absolute;
+              content: "";
+              right: -1px;
+              top: -4px;
+              border: 1px solid $second-color;
+              width: 0;
+              @include border-R(2px);
+              @include transition(0.4s);
+            }
+            &:before {
+              position: absolute;
+              content: "";
+              margin-top: 27px;
+              left: -1px;
+              border: 1px solid $second-color;
+              width: 0;
+              @include transition(0.4s);
+            }
+
+            &:hover {
+              background-color: $second-color;
+              &:after,
+              &:before {
+                width: 120px;
+              }
+              a {
+                color: $h-color;
+              }
+            }
+            a {
+              text-decoration: none;
+              color: $second-color;
+              text-transform: capitalize;
+              @include transition(0.3s);
+            }
+          }
+        }
+      }
+      .col-sm-6.tow {
+        .img {
+          background-image: url(../img/service-2.png);
+        }
+        .main-con {
+          box-shadow: 0 0 15px -8px $main-color;
+          -webkit-box-shadow: 0 0 15px -8px $second-color;
+        }
+      }
+      .col-sm-6.three {
+        .img {
+          background-image: url(../img/service-3.png);
+        }
+      }
+    }
+  }
+}
+
+/*start info div elements style*/
+.info {
+  .container {
+    .row {
+      .col-sm-12.one {
+        .img {
+          background-image: url(../img/info-1.png);
+          background-size: cover;
+          height: 320px;
+          margin: 50px auto;
+          @media (min-width: 768px) and (max-width: 992px) {
+            height: 220px;
+          }
+          @media (max-width: 500px) {
+            height: 240px;
+          }
+        }
+      }
+      .col-sm-12.tow {
+        h3 {
+          padding-top: 100px;
+        }
+        span {
+          display: block;
+          text-transform: capitalize;
+          color: #666;
+        }
+        button {
+          margin: 15px 10px 0 10px;
+          margin-bottom: 50px;
+          @extend %button;
+          position: relative;
+          margin-left: 0 !important;
+          border: 1px solid $second-color !important;
+          /*@include border-R(15px);*/
+          background-color: transparent;
+          border: none;
+          height: 35px;
+          @include transition(0.4s);
+          &:after {
+            position: absolute;
+            content: "";
+            right: -1px;
+            top: -4px;
+            border: 1px solid $second-color;
+            width: 0;
+            @include border-R(2px);
+            @include transition(0.4s);
+          }
+          &:before {
+            position: absolute;
+            content: "";
+            margin-top: 27px;
+            left: -1px;
+            border: 1px solid $second-color;
+            width: 0;
+            @include transition(0.4s);
+          }
+
+          &:hover {
+            background-color: $second-color;
+            &:after,
+            &:before {
+              width: 120px;
+            }
+            a {
+              color: $h-color;
+            }
+          }
+          a {
+            text-decoration: none;
+            color: $second-color;
+            text-transform: capitalize;
+            @include transition(0.3s);
+          }
+        }
+        button:nth-of-type(1) {
+          background-color: $second-color;
+          &:before,
+          &:after {
+            width: 120px;
+          }
+          a {
+            color: $h-color;
+          }
+        }
+      }
+    }
+  }
+}
+/*start subscribe div elmenets  style*/
+.subscribe {
+  min-height: 600px;
+  @extend %main-div;
+  background-image: url(../img/7.jpg);
+  -webkit-clip-path: polygon(0 22%, 100% 0, 100% 80%, 0% 100%);
+  clip-path: polygon(0 22%, 100% 0, 100% 80%, 0% 100%);
+  background-color: $main-color;
+  overflow: visible;
+  @media (min-width: 768px) and (max-width: 991px) {
+    -webkit-clip-path: polygon(0 22%, 100% 0, 100% 88%, 0% 100%);
+    clip-path: polygon(0 22%, 100% 0, 100% 88%, 0% 100%);
+  }
+  @media (max-width: 767px) {
+    -webkit-clip-path: none;
+    clip-path: none;
+    min-height: 650px;
+  }
+
+  .over {
+    @extend %over;
+    background-color: rgba($main-color, 0.6) !important;
+  }
+  .container {
+    .row {
+      .col-sm-12 {
+        h4 {
+          padding-top: 200px;
+          text-transform: capitalize;
+          text-align: left;
+          color: $h-color;
+          padding-bottom: 10px;
+          @media (max-width: 767px) {
+            padding-top: 100px;
+          }
+          span {
+            padding: 5px 10px;
+            background-color: $p-color;
+            color: $second-color;
+            &:after {
+              position: absolute;
+              content: "";
+              margin-top: 28px;
+              left: 25px;
+              width: 41px;
+              border: 2px solid $second-color;
+              @include border-R(3px);
+            }
+          }
+        }
+        span.para {
+          text-transform: capitalize;
+          color: $p-color;
+          width: 90%;
+          line-height: 1.2;
+          text-align: left;
+          padding: 10px 0 0 0;
+          display: block;
+        }
+        button {
+          @extend %button;
+          position: relative;
+          margin-left: 0 !important;
+          border: 1px solid $second-color !important;
+          /*@include border-R(15px);*/
+          background-color: $second-color;
+          border: none;
+          height: 35px;
+          @include transition(0.4s);
+          &:after {
+            position: absolute;
+            content: "";
+            right: -1px;
+            top: -4px;
+            border: 1px solid $second-color;
+            width: 0;
+            @include border-R(2px);
+            @include transition(0.4s);
+          }
+          &:before {
+            position: absolute;
+            content: "";
+            margin-top: 27px;
+            left: -1px;
+            border: 1px solid $second-color;
+            width: 0;
+            @include transition(0.4s);
+          }
+
+          &:hover {
+            background-color: $second-color;
+            &:after,
+            &:before {
+              width: 120px;
+            }
+          }
+          a {
+            text-decoration: none;
+            color: $h-color;
+            text-transform: capitalize;
+            @include transition(0.3s);
+          }
+        }
+      }
+      .col-sm-12 {
+        .img {
+          margin-top: 100px !important;
+          background-image: url(../img/sub1.png);
+          background-size: cover;
+          height: 312px;
+          width: 300px;
+          margin: 50px auto;
+          @media (min-width: 768px) and (max-width: 992px) {
+          }
+          .content-img {
+            position: absolute;
+            width: 114px;
+            height: 204px;
+            margin-left: 55px;
+            margin-top: 37px;
+            background-image: url(../img/sub2.png);
+            background-size: cover;
+          }
+        }
+      }
+    }
+  }
+}
+/*start footer elemens style*/
+footer {
+  padding-top: 100px;
+  .container {
+    h3 {
+      padding-bottom: 50px;
+    }
+    .row {
+      .col-sm-12.one {
+        input {
+          width: 100%;
+          height: 40px;
+          border: 2px solid $p-color;
+          background-color: transparent;
+          @include border-R(10px);
+          margin: 10px 0 10px 0;
+          outline: none;
+          padding: 10px 10px;
+        }
+        textarea {
+          width: 100%;
+          min-height: 150px;
+          max-height: 320px;
+          height: 250px;
+          border: 2px solid $p-color;
+          background-color: transparent;
+          @include border-R(10px);
+          margin: 10px 0 10px 0;
+          outline: none;
+          padding: 10px 10px;
+        }
+        button {
+          margin-top: 0;
+          display: block;
+          @extend %button;
+          position: relative;
+          margin-left: 0 !important;
+          border: 1px solid $second-color !important;
+          /*@include border-R(15px);*/
+          background-color: transparent;
+          border: none;
+          height: 35px;
+          @include transition(0.4s);
+          &:after {
+            position: absolute;
+            content: "";
+            right: -1px;
+            top: -4px;
+            border: 1px solid $second-color;
+            width: 0;
+            @include border-R(2px);
+            @include transition(0.4s);
+          }
+          &:before {
+            position: absolute;
+            content: "";
+            margin-top: 27px;
+            left: -1px;
+            border: 1px solid $second-color;
+            width: 0;
+            @include transition(0.4s);
+          }
+
+          &:hover {
+            background-color: $second-color;
+            &:after,
+            &:before {
+              width: 120px;
+            }
+            a {
+              color: $h-color;
+            }
+          }
+          a {
+            text-decoration: none;
+            text-transform: uppercase !important;
+            color: $second-color;
+            @include transition(0.3s);
+          }
+        }
+      }
+      .col-sm-12.tow {
+        .contents {
+          .co {
+            display: block;
+            padding-top: 15px;
+            button {
+              width: 50px;
+              height: 50px;
+              @include border-R(50%);
+              background-color: transparent;
+              border: 1px solid $main-color;
+
+              i {
+                color: $main-color;
+                font-size: $main-font + 3px;
+              }
+            }
+            span {
+              padding-left: 10px;
+              span.bold {
+                font-weight: bold;
+                text-transform: capitalize;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+/*start copy-right div elements style*/
+.copy-right {
+  margin-top: 50px;
+  background-color: $main-color;
+  .container {
+    .row {
+      .col-sm-12 {
+        span {
+          text-align: center;
+          letter-spacing: 1px;
+          display: block;
+          padding: 10px 0 10px 0;
+          color: $h-color;
+          text-transform: capitalize;
+
+          a {
+            color: $second-color;
+          }
+        }
+      }
+    }
+  }
+}
+
+$width: 50px;
+$height: 50px;
+
+$dark: #323232;
+$red: #ff5a5f;
+$blue: #2ab7ca;
+$light: #d7d0c8;
+
+.main-load {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: $h-color;
+  z-index: 9999999;
+  .spinner {
+    display: flex;
+    align-items: center;
+    width: $width;
+    height: $height;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+
+    &__bar {
+      margin-right: 5px;
+      height: 20px;
+      width: 10px;
+      border-radius: 5px;
+      animation: bars 1000ms infinite cubic-bezier(0.785, 0.135, 0.15, 0.86);
+
+      &:last-child {
+        margin: 0;
+      }
+    }
+  }
+}
+
+.spinner__bar:nth-child(1) {
+  animation-delay: 0ms;
+  background: $dark;
+}
+.spinner__bar:nth-child(2) {
+  animation-delay: 200ms;
+  background: $red;
+}
+.spinner__bar:nth-child(3) {
+  animation-delay: 400ms;
+  background: $blue;
+}
+.spinner__bar:nth-child(4) {
+  animation-delay: 600ms;
+  background: $light;
+}
+
+@keyframes bars {
+  0% {
+    height: 20px;
+  }
+  50% {
+    height: 40px;
+  }
+  100% {
+    height: 20px;
+  }
+}
+@-webkit-keyframes bars {
+  0% {
+    height: 20px;
+  }
+  50% {
+    height: 40px;
+  }
+  100% {
+    height: 20px;
+  }
+}
+@-moz-keyframes bars {
+  0% {
+    height: 20px;
+  }
+  50% {
+    height: 40px;
+  }
+  100% {
+    height: 20px;
+  }
+}
+
+/******************
+  all coy right are reserved to this design   thanks for reading  this few word 
+
+*****************/
